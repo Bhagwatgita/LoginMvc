@@ -1,0 +1,24 @@
+﻿@model AjaxMvc.Models.DbResult
+@{ Layout = null;}
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="//code.jquery.com/jquery-2.1.1.js"></script>
+    <script src="https://unpkg.com/sweetalert2@7.8.2/dist/sweetalert2.all.js"></script>
+<script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.js")" type="text/javascript"></script>
+<script src="~/Scripts/Customs/CustomAjax.js"></script>
+<h1>Feature Add</h1>
+
+
+
+@using (Ajax.BeginForm("Add", new AjaxOptions
+{
+    HttpMethod = "POST",
+    Confirm = "Are you sure to save ?",
+    OnBegin = "OnBegin",
+    OnSuccess = "OnSuccess",
+    OnFailure = "OnFailure",
+}))
+{
+   <input type="text" name="FeatureName" id="FeatureName" placeHolder="Feature Name"/> 
+    <a class="btn btn-warning" title="save" data-toggle="tooltip" onclick="$(this).parent('form').submit();"><i class="fa fa-save"></i></a>
+}
